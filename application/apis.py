@@ -1,6 +1,6 @@
 from flask_potion import fields, ModelResource
 from flask_potion.routes import ItemRoute, Route
-from flask_jwt import jwt_required, current_identity
+from flask_jwt_extended import get_jwt_identity
 from werkzeug.exceptions import Forbidden
 
 from application import db

@@ -36,3 +36,31 @@ class User(db.Model):
         db.String(),
         nullable=False,
         doc='Senha do usuário')
+
+
+class Channel(db.Model):
+    """Define schema for channel table
+    """
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True,
+        doc='id do usuário')
+
+    created_at = db.Column(
+        db.DateTime(timezone=True),
+        nullable=False,
+        index=True,
+        default=db.func.now(),
+        doc='Data de criação')
+
+    name = db.Column(
+        db.String(),
+        nullable=False,
+        doc='Nome do canal')
+
+    url = db.Column(
+        db.String(),
+        nullable=False,
+        doc='url do canal')
+
