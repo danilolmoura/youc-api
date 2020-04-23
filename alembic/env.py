@@ -26,6 +26,7 @@ from application import db
 # ... etc.
 target_metadata = db.metadata
 
+
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
 
