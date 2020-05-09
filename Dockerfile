@@ -1,3 +1,5 @@
+LABEL maintainer "Danilo Moura <danilolmoura@gmail.com>"
+
 FROM ubuntu:16.04
 
 RUN apt-get update -y && \
@@ -14,6 +16,7 @@ ENV USERNAME_YOUC_API_TEST=youc_api_test_user
 ENV PASSWORD_YOUC_API_TEST=
 ENV HOST_YOUC_API_TEST=localhost
 ENV DATABASE_YOUC_API_TEST=youc_api_test
+ENV SECRET_KEY=1234
 
 ENV PYTHONPATH "${PYTHONPATH}:/youc"
 
