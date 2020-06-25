@@ -34,9 +34,14 @@ class ConfigTest(Config):
         os.environ['DATABASE_YOUC_API_TEST'],
     )
 
-class ConfiProd(Config):
+class ConfigProd(Config):
     DEBUG = False
-
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{}:{}@{}/{}'.format(
+        os.environ['PROD_USERNAME_YOUC_API'],
+        os.environ['PROD_PASSWORD_YOUC_API'],
+        os.environ['PROD_HOST_YOUC_API'],
+        os.environ['PROD_DATABASE_YOUC_API'],
+    )
 
 class ConfigStaging(Config):
     DEVELOPMENT = True
@@ -46,6 +51,6 @@ class ConfigStaging(Config):
 config_by_name = dict(
     dev=ConfigDev,
     test=ConfigTest,
-    prod=ConfiProd,
+    prod=ConfigProd,
     stagging=ConfigStaging
 )
