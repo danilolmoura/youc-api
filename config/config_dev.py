@@ -5,6 +5,7 @@ from . import Config
 class ConfigDev(Config):
     DEVELOPMENT = True
     DEBUG = True
+    FLASK_ENV = 'dev'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{}:{}@{}/{}'.format(
         os.environ['USERNAME_YOUC_API_DEV'],
         os.environ['PASSWORD_YOUC_API_DEV'],

@@ -10,8 +10,6 @@ class Config(object):
     POTION_MAX_PER_PAGE = 5000
     JWT_SECRET_KEY = os.environ['JWT_SECRET_KEY']
 
-import pdb
-
 config_by_name = dict(
     dev='config.config_dev.ConfigDev',
     test='config.config_test.ConfigTest',

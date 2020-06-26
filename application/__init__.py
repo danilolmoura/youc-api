@@ -11,11 +11,12 @@ db = SQLAlchemy()
 from application import db
 from application.models import User
 
-def create_app(config_name):
+def create_app():
     from flask_potion import Api
 
     app = Flask(__name__, instance_relative_config=True)
-    app.config.from_object(config_by_name[config_name])
+    app.config.from_object(
+        config_by_name[os.environ.get('FLASK_ENV', 'dev')])
 
     app.logger.info('Connecting database')
     db.init_app(app)
