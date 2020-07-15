@@ -5,16 +5,12 @@ RUN apt update -y && \
 
 FROM python:3.8-alpine
 
-# Set Envs
-ENV API_SECRET_KEY=1234
-ENV JWT_SECRET_KEY=1234
+COPY ./requirements.txt youc-api/requirements.txt
+RUN pip install -r /youc-api/requirements.txt
 
-COPY ./requirements.txt youc_api/requirements.txt
-RUN pip install -r /youc_api/requirements.txt
+COPY . youc-api/
 
-COPY . youc_api/
-
-WORKDIR youc_api/
+WORKDIR youc-api/
 
 # Expose port
 EXPOSE 5000
