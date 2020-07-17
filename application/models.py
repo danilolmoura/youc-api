@@ -104,7 +104,7 @@ class Video(db.Model):
         db.String(),
         nullable=False,
         doc='Título do vídeo')
-#psycopg2==2.8.5
+
     image_urls = db.Column(
         db.ARRAY(db.String()),
         nullable=False,
