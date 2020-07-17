@@ -6,7 +6,13 @@ RUN apt update -y && \
 FROM python:3.8-alpine
 
 COPY ./requirements.txt youc-api/requirements.txt
-RUN pip install -r /youc-api/requirements.txt
+
+# Solution to avoid psycopg2 problem
+RUN \
+ apk add --no-cache postgresql-libs && \
+ apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
+ python3 -m pip install -r /youc-api/requirements.txt --no-cache-dir && \
+ apk --purge del .build-deps
 
 COPY . youc-api/
 

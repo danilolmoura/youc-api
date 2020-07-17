@@ -2,7 +2,6 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_jwt_extended import JWTManager, jwt_required, create_access_token
 
 from config import config_by_name
 
@@ -12,6 +11,8 @@ from application import db
 from application.models import User
 
 def create_app(config_name):
+    from flask_jwt_extended import JWTManager, jwt_required, create_access_token
+
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_by_name[config_name])
 
@@ -43,7 +44,7 @@ def create_app(config_name):
 
     @app.route('/', methods=['GET'])
     def index():
-        return 'Qual foi?'
+        return 'Hello docker compose'
 
     app.logger.info('Finished initialization')
 
